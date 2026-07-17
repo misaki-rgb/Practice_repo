@@ -1,20 +1,12 @@
-name: 3-2-event-condition workflow
+name: 3-3-branch-condition workflow
 
 on:
-  pull_request:
   workflow_dispatch:
 
 jobs:
-  event-conditional-job:
+  branch-condition-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Run on pull_request
-        if: ${{ github.event_name == 'pull_request' }}
-        run: echo "run on pull_request"
-
-      - name: Run on workflow_dispatch
-        if: ${{ github.event_name == 'workflow_dispatch' }}
-        run: echo "run on workflow_dispatch"
-
-      - name: test
-        run: echo "hello"      
+      - name: Run on main branch
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: echo "run on main"   
