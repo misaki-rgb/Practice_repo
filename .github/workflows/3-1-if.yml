@@ -19,7 +19,10 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     needs: job1
-    steps:
+    steps:      
+      - name: Debug
+        run: |
+          echo "run_step=${{ inputs.run_step }}"
       - name: Conditional Step
-        if: ${{ inputs.run_step == true }}
+        if: inputs.run_step
         run: echo "conditional step" 
